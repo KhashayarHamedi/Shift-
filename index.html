@@ -278,7 +278,63 @@
       </form>
     </div>
   </div>
+<div class="modal" id="adminPasswordModal" aria-hidden="true">
+  <div class="modalShade" data-close="adminPasswordModal"></div>
 
+  <div class="modalCard">
+    <div class="modalHead">
+      <div>
+        <span class="microLabel">ADMIN ACCESS</span>
+        <h2>Welcome Kash</h2>
+      </div>
+
+      <button
+        class="closeButton"
+        data-close="adminPasswordModal"
+        aria-label="Close"
+        type="button"
+      >
+        ×
+      </button>
+    </div>
+
+    <form id="adminPasswordForm">
+
+      <label>
+        PASSWORD
+
+        <input
+          id="adminPasswordInput"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Enter admin password"
+          required
+        >
+      </label>
+
+      <p id="adminPasswordError"></p>
+
+      <div class="formActions">
+
+        <button
+          type="button"
+          class="ghostButton"
+          data-close="adminPasswordModal"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="primaryButton"
+        >
+          Unlock
+        </button>
+
+      </div>
+    </form>
+  </div>
+</div>
   <div class="toast" id="toast" role="status" aria-live="polite"><i></i><span id="toastText">Saved</span></div>
 
   <script src="app.js"></script>
