@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="description" content="Shift, a private team ritual for learning and sharing">
+  <title>SHIFT</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambientOne" aria-hidden="true"></div>
+  <div class="ambient ambientTwo" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div id="app" class="appShell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <button class="brand" data-route="home" aria-label="Shift home">
+        <span class="brandIcon">S</span>
+        <span class="brandText">SHIFT</span>
+      </button>
+
+      <nav class="navList">
+        <button class="navButton active" data-route="home"><span>⌂</span><b>Home</b></button>
+        <button class="navButton" data-route="future"><span>◌</span><b>Future</b></button>
+        <button class="navButton" data-route="library"><span>□</span><b>Library</b></button>
+        <button class="navButton" data-route="history"><span>◷</span><b>History</b></button>
+      </nav>
+
+      <div class="sidebarFoot">
+        <div class="syncState" id="syncState" title="Save status"><i></i><span>Checking sync</span></div>
+        <button class="identityButton" id="identityButton" aria-label="Change identity">
+          <span class="avatar small" id="sideAvatar">K</span>
+          <span><strong id="sideName">Kash</strong><small id="sideRole">Technology Explorer</small></span>
+          <b>⌄</b>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <span class="microLabel" id="todayLabel">TODAY</span>
+          <strong class="routeTitle" id="routeTitle">Home</strong>
+        </div>
+        <div class="topbarActions">
+          <button class="ghostButton hidden" id="adminButton">Admin mode</button>
+          <button class="roundButton" id="quickAddButton" aria-label="Quick add">+</button>
+          <button class="roundButton avatar" id="profileButton" aria-label="Open your profile">K</button>
+        </div>
+      </header>
+
+      <section class="page active" id="pageHome" data-page="home">
+        <section class="homeIntro reveal">
+          <div>
+            <span class="microLabel">THE NEXT CONVERSATION</span>
+            <h1>Know what is next.<br><em>Bring something worth sharing.</em></h1>
+          </div>
+          <p>One clear place for the next host, team topics, suggestions and everything worth remembering.</p>
+        </section>
+
+        <section class="nextSession reveal" id="nextSessionCard">
+          <div class="nextGlow" aria-hidden="true"></div>
+          <div class="nextHeader">
+            <div class="nextHostIdentity">
+              <span class="avatar large" id="nextHostAvatar">U</span>
+              <div>
+                <span class="statusPill">NEXT HOST</span>
+                <h2 id="nextHostName">Usama</h2>
+              </div>
+            </div>
+            <button class="iconTextButton adminOnly hidden" id="editSessionButton">Edit session</button>
+          </div>
+
+          <div class="nextBody">
+            <div class="nextTopic">
+              <span class="fieldLabel">TOPIC</span>
+              <h3 id="nextTopicTitle">Can autonomous agents be trusted?</h3>
+              <p id="nextTopicDescription">A practical discussion about access, control and what we should never delegate.</p>
+            </div>
+            <div class="countdownPanel">
+              <span class="fieldLabel">STARTS IN</span>
+              <div class="countdown" aria-label="Countdown to next session">
+                <div><strong id="countDays">02</strong><small>DAYS</small></div>
+                <div><strong id="countHours">02</strong><small>HOURS</small></div>
+                <div><strong id="countMinutes">10</strong><small>MINUTES</small></div>
+                <div><strong id="countSeconds">00</strong><small>SECONDS</small></div>
+              </div>
+              <div class="sessionMeta">
+                <span id="nextSessionDate">27 August 2026</span>
+                <span id="nextSessionTime">18:00</span>
+                <span id="nextSessionPlace">Outside office</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="sectionBlock reveal">
+          <div class="sectionHeading">
+            <div><span class="microLabel">TEAM</span><h2>What each person wants to bring</h2></div>
+            <p>The next host is always slightly louder. Everyone else stays readable.</p>
+          </div>
+          <div class="peopleGrid" id="peopleGrid"></div>
+        </section>
+      </section>
+
+      <section class="page" id="pageFuture" data-page="future">
+        <div class="pageHeading reveal">
+          <div><span class="microLabel">FUTURE</span><h1>Ideas that deserve<br><em>our attention.</em></h1></div>
+          <div class="headingActions"><button class="primaryButton adminOnly hidden" id="addFutureButton">Add topic</button></div>
+        </div>
+        <section class="futureStage reveal" id="futureStage" aria-label="Future topics"></section>
+        <p class="motionNote">Move your pointer near a topic. Click any bubble to open it.</p>
+      </section>
+
+      <section class="page" id="pageLibrary" data-page="library">
+        <div class="pageHeading reveal">
+          <div><span class="microLabel">LIBRARY</span><h1>Keep the useful things<br><em>easy to find.</em></h1></div>
+          <div class="headingActions"><button class="primaryButton adminOnly hidden" id="addLibraryButton">Add collection</button></div>
+        </div>
+        <div class="searchBar reveal"><span>⌕</span><input id="librarySearch" type="search" placeholder="Search the library" aria-label="Search library"></div>
+        <div class="libraryGrid reveal" id="libraryGrid"></div>
+      </section>
+
+      <section class="page" id="pageHistory" data-page="history">
+        <div class="pageHeading reveal">
+          <div><span class="microLabel">HISTORY</span><h1>Every session<br><em>leaves a trace.</em></h1></div>
+          <div class="headingActions"><button class="primaryButton adminOnly hidden" id="completeShiftButton">Complete current shift</button></div>
+        </div>
+        <div class="historyList reveal" id="historyList"></div>
+      </section>
+    </main>
+
+    <nav class="mobileNav" aria-label="Mobile navigation">
+      <button class="active" data-route="home"><span>⌂</span><small>Home</small></button>
+      <button data-route="future"><span>◌</span><small>Future</small></button>
+      <button data-route="library"><span>□</span><small>Library</small></button>
+      <button data-route="history"><span>◷</span><small>History</small></button>
+      <button id="mobileProfile"><span>◎</span><small>You</small></button>
+    </nav>
+  </div>
+
+  <div class="popover identityPopover" id="identityPopover" aria-hidden="true">
+    <div class="popoverHead"><span class="microLabel">YOU ARE</span><button data-close="identityPopover">×</button></div>
+    <div id="identityChoices" class="identityChoices"></div>
+    <p>This choice is saved on this device.</p>
+  </div>
+
+  <div class="modal" id="profileModal" aria-hidden="true">
+    <div class="modalShade" data-close="profileModal"></div>
+    <div class="modalCard modalWide">
+      <div class="modalHead"><div><span class="microLabel">PROFILE</span><h2 id="profileModalTitle">Kash</h2></div><button class="closeButton" data-close="profileModal">×</button></div>
+      <form id="profileForm" class="formGrid">
+        <label>Name<input id="profileName" maxlength="40" required></label>
+        <label>Role<input id="profileRole" maxlength="60" required></label>
+        <label class="spanTwo">Profile description<textarea id="profileBio" rows="3" maxlength="220"></textarea></label>
+        <label class="spanTwo">Topic<input id="profileTopic" maxlength="110" required></label>
+        <label class="spanTwo">Topic description<textarea id="profileTopicDescription" rows="4" maxlength="360" required></textarea></label>
+        <label class="spanTwo">Suggested topics<input id="profileSuggestions" maxlength="320" placeholder="Separate topics with commas"></label>
+        <div class="formActions spanTwo"><button type="button" class="ghostButton" data-close="profileModal">Cancel</button><button type="submit" class="primaryButton">Save changes</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="suggestModal" aria-hidden="true">
+    <div class="modalShade" data-close="suggestModal"></div>
+    <div class="modalCard">
+      <div class="modalHead"><div><span class="microLabel">SUGGEST A TOPIC</span><h2 id="suggestTitle">For Usama</h2></div><button class="closeButton" data-close="suggestModal">×</button></div>
+      <form id="suggestForm">
+        <label>Topic<input id="suggestInput" maxlength="100" placeholder="One clear idea" required></label>
+        <div class="formActions"><button type="button" class="ghostButton" data-close="suggestModal">Cancel</button><button type="submit" class="primaryButton">Send suggestion</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="sessionModal" aria-hidden="true">
+    <div class="modalShade" data-close="sessionModal"></div>
+    <div class="modalCard modalWide">
+      <div class="modalHead"><div><span class="microLabel">NEXT SESSION</span><h2>Edit session</h2></div><button class="closeButton" data-close="sessionModal">×</button></div>
+      <form id="sessionForm" class="formGrid">
+        <label>Date<input id="sessionDateInput" type="date" required></label>
+        <label>Time<input id="sessionTimeInput" type="time" required></label>
+        <label class="spanTwo">Place<input id="sessionPlaceInput" maxlength="80" required></label>
+        <div class="formActions spanTwo"><button type="button" class="ghostButton" data-close="sessionModal">Cancel</button><button type="submit" class="primaryButton">Save session</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="futureModal" aria-hidden="true">
+    <div class="modalShade" data-close="futureModal"></div>
+    <div class="modalCard">
+      <div class="modalHead"><div><span class="microLabel">FUTURE TOPIC</span><h2 id="futureModalTitle">Topic</h2></div><button class="closeButton" data-close="futureModal">×</button></div>
+      <div id="futureView" class="detailView"></div>
+      <form id="futureForm" class="hidden">
+        <label>Topic<input id="futureNameInput" maxlength="80" required></label>
+        <label>Why it matters<textarea id="futureNoteInput" rows="4" maxlength="280"></textarea></label>
+        <label>Bubble size<select id="futureSizeInput"><option value="small">Small</option><option value="medium">Medium</option><option value="large">Large</option></select></label>
+        <div class="formActions"><button type="button" class="dangerButton" id="deleteFutureButton">Delete</button><span class="spacer"></span><button type="button" class="ghostButton" id="cancelFutureEdit">Cancel</button><button type="submit" class="primaryButton">Save topic</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="libraryModal" aria-hidden="true">
+    <div class="modalShade" data-close="libraryModal"></div>
+    <div class="modalCard modalWide">
+      <div class="modalHead"><div><span class="microLabel">LIBRARY</span><h2 id="libraryModalTitle">Collection</h2></div><button class="closeButton" data-close="libraryModal">×</button></div>
+      <div id="libraryView" class="detailView"></div>
+      <form id="libraryForm" class="formGrid hidden">
+        <label class="spanTwo">Collection name<input id="libraryNameInput" maxlength="80" required></label>
+        <label class="spanTwo">Description<textarea id="libraryDescriptionInput" rows="3" maxlength="260"></textarea></label>
+        <label>Sessions<input id="librarySessionsInput" type="number" min="0" max="999"></label>
+        <label>Resources<input id="libraryResourcesInput" type="number" min="0" max="999"></label>
+        <label class="spanTwo">Featured resource<input id="libraryFeaturedInput" maxlength="140"></label>
+        <div class="formActions spanTwo"><button type="button" class="dangerButton" id="deleteLibraryButton">Delete</button><span class="spacer"></span><button type="button" class="ghostButton" id="cancelLibraryEdit">Cancel</button><button type="submit" class="primaryButton">Save collection</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="quickAddModal" aria-hidden="true">
+    <div class="modalShade" data-close="quickAddModal"></div>
+    <div class="modalCard">
+      <div class="modalHead"><div><span class="microLabel">QUICK ADD</span><h2>What do you want to add?</h2></div><button class="closeButton" data-close="quickAddModal">×</button></div>
+      <div class="quickChoices">
+        <button id="quickSuggest"><span>✦</span><div><strong>Suggest a topic</strong><small>Send an idea to someone</small></div></button>
+        <button id="quickFuture" class="adminOnly hidden"><span>◌</span><div><strong>Add Future topic</strong><small>Create a moving bubble</small></div></button>
+        <button id="quickLibrary" class="adminOnly hidden"><span>□</span><div><strong>Add Library collection</strong><small>Create a knowledge card</small></div></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="choosePersonModal" aria-hidden="true">
+    <div class="modalShade" data-close="choosePersonModal"></div>
+    <div class="modalCard">
+      <div class="modalHead"><div><span class="microLabel">SUGGEST FOR</span><h2>Choose a person</h2></div><button class="closeButton" data-close="choosePersonModal">×</button></div>
+      <div class="identityChoices" id="suggestPersonChoices"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="adminModal" aria-hidden="true">
+    <div class="modalShade" data-close="adminModal"></div>
+    <div class="modalCard modalWide">
+      <div class="modalHead"><div><span class="microLabel">ADMIN</span><h2>Control center</h2></div><button class="closeButton" data-close="adminModal">×</button></div>
+      <form id="adminForm" class="formGrid">
+        <label>Last completed host<select id="adminLastHost"></select></label>
+        <label>Next host<input id="adminNextHost" disabled></label>
+        <label>Date<input id="adminSessionDate" type="date" required></label>
+        <label>Time<input id="adminSessionTime" type="time" required></label>
+        <label class="spanTwo">Place<input id="adminSessionPlace" maxlength="80" required></label>
+        <div class="adminShortcuts spanTwo">
+          <button type="button" data-admin-route="future"><span>◌</span><strong>Manage Future</strong></button>
+          <button type="button" data-admin-route="library"><span>□</span><strong>Manage Library</strong></button>
+          <button type="button" data-admin-route="history"><span>◷</span><strong>Manage History</strong></button>
+        </div>
+        <div class="formActions spanTwo"><button type="button" class="ghostButton" id="exportDataButton">Export data</button><label class="fileButton">Import data<input id="importDataInput" type="file" accept="application/json"></label><span class="spacer"></span><button type="button" class="ghostButton" data-close="adminModal">Cancel</button><button type="submit" class="primaryButton">Save admin settings</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="historyModal" aria-hidden="true">
+    <div class="modalShade" data-close="historyModal"></div>
+    <div class="modalCard modalWide">
+      <div class="modalHead"><div><span class="microLabel">HISTORY ITEM</span><h2>Edit session</h2></div><button class="closeButton" data-close="historyModal">×</button></div>
+      <form id="historyForm" class="formGrid">
+        <label>Date<input id="historyDateInput" type="date" required></label>
+        <label>Host<select id="historyHostInput"></select></label>
+        <label class="spanTwo">Topic<input id="historyTopicInput" maxlength="120" required></label>
+        <label class="spanTwo">Format<input id="historyTypeInput" maxlength="60" required></label>
+        <div class="formActions spanTwo"><button type="button" class="dangerButton" id="deleteHistoryButton">Delete</button><span class="spacer"></span><button type="button" class="ghostButton" data-close="historyModal">Cancel</button><button type="submit" class="primaryButton">Save session</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"><i></i><span id="toastText">Saved</span></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
