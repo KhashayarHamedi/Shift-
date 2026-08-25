@@ -1,7 +1,7 @@
 const STORAGE_KEY = 'shift_final_state_v1';
 const IDENTITY_KEY = 'shift_identity_v1';
 const API_URL = '/api/state';
-
+let adminAuthenticated = false;
 const seed = {
   version: 1,
   rotation: ['kash','usama','patrick','param'],
