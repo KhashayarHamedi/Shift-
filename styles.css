@@ -35,3 +35,65 @@ button,input,textarea,select{font:inherit}button{color:inherit}button:focus-visi
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}.nextGlow{display:none}}
 .adminShortcuts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}.adminShortcuts button{border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:12px;padding:13px;display:flex;align-items:center;gap:9px;cursor:pointer}.adminShortcuts button:hover{background:rgba(255,255,255,.055)}.adminShortcuts span{color:var(--accent);font-size:17px}.adminShortcuts strong{font-size:11px}.fileButton{border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:11px;padding:9px 13px;font-size:12px!important;font-weight:650!important;letter-spacing:0!important;color:var(--text)!important;cursor:pointer;display:block!important}.fileButton input{display:none}.historyEditButton{border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:9px;padding:6px 8px;font-size:9px;font-weight:700;cursor:pointer}.historyEditButton:hover{background:rgba(255,255,255,.07)}
 @media(max-width:560px){.adminShortcuts{grid-template-columns:1fr}.formActions{flex-wrap:wrap}.fileButton{order:2}}
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0b0d10;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.intro.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.introMark {
+  font-size: clamp(48px, 9vw, 110px);
+  font-weight: 750;
+  letter-spacing: -0.06em;
+  color: #f5f6f7;
+  animation: introReveal 0.8s cubic-bezier(.2,.8,.2,1);
+}
+
+.introLine {
+  width: 180px;
+  height: 2px;
+  margin-top: 28px;
+  background: rgba(255,255,255,0.12);
+  overflow: hidden;
+}
+
+.introLine span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #b7ff5a;
+  transform-origin: left;
+  animation: introLoading 1.8s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes introLoading {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes introReveal {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+    letter-spacing: 0.05em;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: -0.06em;
+  }
+}
