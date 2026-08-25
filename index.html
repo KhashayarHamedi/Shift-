@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080808" />
+  <meta name="description" content="Shift. A private innovation ritual for curious technology teams." />
+  <title>SHIFT</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursorGlow" id="cursorGlow" aria-hidden="true"></div>
+
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="introMark">SHIFT</div>
+    <div class="introLine"><span></span></div>
+  </div>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <button class="brand" data-nav="home" aria-label="Shift home">
+        <span class="brandMark">S</span>
+        <span class="brandWord">SHIFT</span>
+      </button>
+
+      <nav class="sideNav" aria-label="Primary navigation">
+        <button class="navItem active" data-nav="home"><span class="navGlyph">⌂</span><span>Home</span></button>
+        <button class="navItem" data-nav="timeline"><span class="navGlyph">◷</span><span>Timeline</span></button>
+        <button class="navItem" data-nav="ideas"><span class="navGlyph">✦</span><span>Ideas</span><span class="navDot"></span></button>
+        <button class="navItem" data-nav="radar"><span class="navGlyph">◉</span><span>Radar</span></button>
+        <button class="navItem" data-nav="library"><span class="navGlyph">⌘</span><span>Library</span></button>
+      </nav>
+
+      <div class="sideBottom">
+        <button class="navItem" data-nav="team"><span class="navGlyph">◎</span><span>Team</span></button>
+        <button class="profileChip" data-nav="profile">
+          <span class="profileAvatar">K</span>
+          <span class="profileText"><strong>Kash</strong><small>Your profile</small></span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topLeft">
+          <span class="eyebrow" id="pageEyebrow">TUESDAY 25 AUGUST</span>
+        </div>
+        <div class="topActions">
+          <button class="iconBtn" id="soundBtn" aria-label="Toggle sound"><span id="soundIcon">◌</span></button>
+          <button class="iconBtn" id="commandBtn" aria-label="Open command menu">⌘</button>
+          <button class="avatarBtn" data-nav="profile" aria-label="Open profile">K</button>
+        </div>
+      </header>
+
+      <section class="page active" id="page-home">
+        <div class="greeting reveal">
+          <p class="kicker">GOOD AFTERNOON, KASH</p>
+          <h1>Something worth<br><span>leaving the office for.</span></h1>
+        </div>
+
+        <section class="hero reveal" id="heroCard">
+          <div class="heroAtmosphere" aria-hidden="true">
+            <div class="orb orbOne"></div>
+            <div class="orb orbTwo"></div>
+            <div class="scan"></div>
+          </div>
+          <div class="heroTop">
+            <span class="liveTag"><span class="pulseDot"></span>NEXT SHIFT</span>
+            <span class="heroIndex">27 / 2026</span>
+          </div>
+
+          <div class="heroGrid">
+            <div class="heroHostBlock">
+              <div class="hostAvatar" aria-hidden="true"><span>U</span></div>
+              <div>
+                <span class="smallLabel">HOST</span>
+                <div class="hostName">Usama</div>
+              </div>
+            </div>
+
+            <div class="heroStory">
+              <span class="smallLabel">THIS THURSDAY AT 18:00</span>
+              <h2>AI agents<br>are apps<br><em>disappearing?</em></h2>
+              <p>A live exploration of what software looks like when the interface becomes the agent.</p>
+              <div class="heroMeta">
+                <span>45 MIN</span>
+                <span>LIVE DEMO</span>
+                <span>OUTSIDE OFFICE</span>
+              </div>
+            </div>
+
+            <div class="countdownBlock">
+              <span class="smallLabel">STARTS IN</span>
+              <div class="countdown" id="countdown">
+                <div><strong id="days">02</strong><small>DAYS</small></div>
+                <span>:</span>
+                <div><strong id="hours">03</strong><small>HOURS</small></div>
+                <span>:</span>
+                <div><strong id="minutes">41</strong><small>MIN</small></div>
+              </div>
+              <button class="primaryBtn magnetic" id="startShiftBtn"><span>ENTER SHIFT</span><b>↗</b></button>
+            </div>
+          </div>
+
+          <div class="heroFooter">
+            <div class="attendance">
+              <div class="miniAvatars"><span>K</span><span>P</span><span>P</span></div>
+              <span>Everyone is in</span>
+            </div>
+            <button class="textBtn" id="mysteryBtn">Turn mystery mode on <span>↗</span></button>
+          </div>
+        </section>
+
+        <section class="sectionRow reveal">
+          <div class="sectionTitle">
+            <div><span class="sectionIndex">01</span><h3>Getting attention</h3></div>
+            <button class="textBtn" data-nav="ideas">See all ideas <span>↗</span></button>
+          </div>
+          <div class="ideaStrip">
+            <article class="ideaCard tilt" data-idea="tender">
+              <div class="ideaTop"><span class="ideaAuthor">KASH</span><span class="ideaNumber">01</span></div>
+              <h4>Could AI automate an entire tender?</h4>
+              <div class="ideaFooter"><span>Automation</span><button class="reactionBtn">🔥 <b>7</b></button></div>
+            </article>
+            <article class="ideaCard tilt" data-idea="mcp">
+              <div class="ideaTop"><span class="ideaAuthor">PARAM</span><span class="ideaNumber">02</span></div>
+              <h4>What actually happens inside MCP?</h4>
+              <div class="ideaFooter"><span>Infrastructure</span><button class="reactionBtn">🤯 <b>5</b></button></div>
+            </article>
+            <article class="ideaCard tilt" data-idea="interface">
+              <div class="ideaTop"><span class="ideaAuthor">PATRICK</span><span class="ideaNumber">03</span></div>
+              <h4>What comes after the graphical interface?</h4>
+              <div class="ideaFooter"><span>Future tech</span><button class="reactionBtn">✦ <b>4</b></button></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="splitGrid reveal">
+          <article class="radarPreview panel" data-nav="radar">
+            <div class="panelHead"><span class="sectionIndex">02</span><span>ON OUR RADAR</span><span class="statusLight"></span></div>
+            <div class="radarMini">
+              <div class="radarRing r1"></div><div class="radarRing r2"></div><div class="radarRing r3"></div>
+              <div class="radarSweep"></div>
+              <button class="radarPoint p1" aria-label="MCP"><span>MCP</span></button>
+              <button class="radarPoint p2" aria-label="Claude Code"><span>CLAUDE CODE</span></button>
+              <button class="radarPoint p3" aria-label="Browser agents"><span>BROWSER AGENTS</span></button>
+            </div>
+            <div class="radarLegend"><span><i></i>TRY</span><span><i></i>WATCH</span><span><i></i>ADOPT</span></div>
+          </article>
+
+          <article class="lastShift panel">
+            <div class="panelHead"><span class="sectionIndex">03</span><span>LAST SHIFT</span><span>13 AUG</span></div>
+            <div class="lastShiftBody">
+              <div class="quoteMark">“</div>
+              <blockquote>Maybe workflows disappear entirely.</blockquote>
+              <div class="lastShiftMeta"><span>PARAM</span><span>ENTERPRISE AUTOMATION</span></div>
+            </div>
+            <button class="panelAction">OPEN SESSION <span>↗</span></button>
+          </article>
+        </section>
+
+        <section class="shiftMe reveal">
+          <div>
+            <span class="sectionIndex">04</span>
+            <p>NO IDEA FOR THE NEXT SESSION?</p>
+          </div>
+          <button class="shiftMeBtn magnetic" id="shiftMeBtn"><span>SHIFT ME</span><b>↗</b></button>
+        </section>
+      </section>
+
+      <section class="page" id="page-timeline">
+        <div class="pageIntro reveal"><span class="kicker">YOUR COLLECTIVE MEMORY</span><h1>Every Shift<br><span>leaves a trace.</span></h1></div>
+        <div class="timeline reveal">
+          <article class="timelineItem upcoming"><span class="timelineDate">27 AUG</span><span class="timelineDot"></span><div><small>USAMA</small><h3>AI agents are apps disappearing?</h3><p>Live demo · 45 min</p></div><span class="timelineStatus">NEXT</span></article>
+          <article class="timelineItem"><span class="timelineDate">13 AUG</span><span class="timelineDot"></span><div><small>PARAM</small><h3>The future of enterprise automation</h3><p>Discussion · 60 min</p></div><span class="timelineArrow">↗</span></article>
+          <article class="timelineItem"><span class="timelineDate">30 JUL</span><span class="timelineDot"></span><div><small>PATRICK</small><h3>Consulting in 2030</h3><p>Debate · 45 min</p></div><span class="timelineArrow">↗</span></article>
+          <article class="timelineItem"><span class="timelineDate">16 JUL</span><span class="timelineDot"></span><div><small>KASH</small><h3>I built an app during lunch</h3><p>Live build · 45 min</p></div><span class="timelineArrow">↗</span></article>
+          <article class="timelineItem"><span class="timelineDate">02 JUL</span><span class="timelineDot"></span><div><small>USAMA</small><h3>Security patterns nobody talks about</h3><p>Whiteboard · 45 min</p></div><span class="timelineArrow">↗</span></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-ideas">
+        <div class="pageIntro reveal"><span class="kicker">IDEA WALL</span><h1>Bring the thought<br><span>before the slides.</span></h1></div>
+        <div class="ideasToolbar reveal"><button class="primaryBtn magnetic" id="newIdeaBtn"><span>ADD AN IDEA</span><b>+</b></button><div class="filterPills"><button class="active">HOT</button><button>NEW</button><button>YOURS</button></div></div>
+        <div class="ideaWall reveal" id="ideaWall">
+          <article class="wallCard large"><div><span>KASH · AUTOMATION</span><h3>Could AI automate an entire tender?</h3></div><p>From intake to compliance review to submission readiness. What would a trustworthy version actually need?</p><div class="wallFoot"><button class="reactionBtn">🔥 <b>7</b></button><button class="reactionBtn">🤯 <b>3</b></button><span>2 comments</span></div></article>
+          <article class="wallCard"><div><span>PARAM · INFRASTRUCTURE</span><h3>What actually happens inside MCP?</h3></div><p>One session. No marketing language. Just the protocol.</p><div class="wallFoot"><button class="reactionBtn">🤯 <b>5</b></button><span>1 comment</span></div></article>
+          <article class="wallCard"><div><span>PATRICK · FUTURE TECH</span><h3>What comes after the graphical interface?</h3></div><p>What if software becomes intent first?</p><div class="wallFoot"><button class="reactionBtn">✦ <b>4</b></button><span>3 comments</span></div></article>
+          <article class="wallCard accent"><div><span>USAMA · SECURITY</span><h3>Can an autonomous agent be trusted with production access?</h3></div><p>Let's attack the assumptions.</p><div class="wallFoot"><button class="reactionBtn">🔥 <b>6</b></button><span>4 comments</span></div></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-radar">
+        <div class="pageIntro reveal"><span class="kicker">TECH RADAR</span><h1>What deserves<br><span>our attention now?</span></h1></div>
+        <div class="radarFullWrap reveal">
+          <div class="radarFull" id="radarFull">
+            <div class="fullRing fr1"><span>ADOPT</span></div>
+            <div class="fullRing fr2"><span>TRY</span></div>
+            <div class="fullRing fr3"><span>WATCH</span></div>
+            <div class="fullRing fr4"><span>WTF?</span></div>
+            <div class="radarSweep big"></div>
+            <button class="techNode n1"><i></i><span>MCP</span></button>
+            <button class="techNode n2"><i></i><span>CLAUDE CODE</span></button>
+            <button class="techNode n3"><i></i><span>BROWSER AGENTS</span></button>
+            <button class="techNode n4"><i></i><span>APP MODELS</span></button>
+            <button class="techNode n5"><i></i><span>LOCAL MODELS</span></button>
+          </div>
+          <aside class="radarFeed">
+            <span class="smallLabel">LATEST MOVEMENT</span>
+            <h3>MCP moved from Watch to Try.</h3>
+            <p>3 people want a hands on session.</p>
+            <button class="textBtn">View discussion <span>↗</span></button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" id="page-library">
+        <div class="pageIntro reveal"><span class="kicker">KNOWLEDGE LIBRARY</span><h1>Nothing useful<br><span>gets lost.</span></h1></div>
+        <div class="librarySearch reveal"><span>⌘</span><input aria-label="Search library" placeholder="Search ideas, sessions, tools, people" /></div>
+        <div class="libraryGrid reveal">
+          <article class="libraryCard"><span>12 SHIFTS</span><h3>AI Agents</h3><p>38 resources · 9 takeaways</p><b>↗</b></article>
+          <article class="libraryCard"><span>08 SHIFTS</span><h3>Automation</h3><p>24 resources · 11 takeaways</p><b>↗</b></article>
+          <article class="libraryCard"><span>07 SHIFTS</span><h3>Appian</h3><p>19 resources · 7 takeaways</p><b>↗</b></article>
+          <article class="libraryCard"><span>06 SHIFTS</span><h3>Consulting</h3><p>16 resources · 8 takeaways</p><b>↗</b></article>
+          <article class="libraryCard"><span>03 SHIFTS</span><h3>Security</h3><p>10 resources · 5 takeaways</p><b>↗</b></article>
+          <article class="libraryCard"><span>09 SHIFTS</span><h3>Future Tech</h3><p>31 resources · 13 takeaways</p><b>↗</b></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-team">
+        <div class="pageIntro reveal"><span class="kicker">THE CREW</span><h1>Four people.<br><span>One curiosity loop.</span></h1></div>
+        <div class="teamGrid reveal">
+          <article class="personCard featured"><div class="personInitial">K</div><span>TECHNOLOGY EXPLORER</span><h3>Kash</h3><p>AI agents · Automation · Product building</p><div class="personStats"><span><b>06</b> hosted</span><span><b>18</b> ideas</span></div></article>
+          <article class="personCard"><div class="personInitial">U</div><span>SECURITY PROVOCATEUR</span><h3>Usama</h3><p>Security · Architecture · Agent systems</p><div class="personStats"><span><b>07</b> hosted</span><span><b>11</b> ideas</span></div></article>
+          <article class="personCard"><div class="personInitial">P</div><span>STRATEGY CONNECTOR</span><h3>Patrick</h3><p>Consulting · Future work · Business design</p><div class="personStats"><span><b>05</b> hosted</span><span><b>14</b> ideas</span></div></article>
+          <article class="personCard"><div class="personInitial">P</div><span>AUTOMATION BUILDER</span><h3>Param</h3><p>Automation · Infrastructure · Experiments</p><div class="personStats"><span><b>06</b> hosted</span><span><b>13</b> ideas</span></div></article>
+        </div>
+        <section class="rotationCard reveal"><span class="smallLabel">HOST ROTATION</span><div class="rotationNames"><strong>KASH</strong><i>→</i><strong>USAMA</strong><i>→</i><strong>PATRICK</strong><i>→</i><strong>PARAM</strong><i>→</i><strong>KASH</strong></div><p>You are up again in 3 Shifts.</p></section>
+      </section>
+
+      <section class="page" id="page-profile">
+        <div class="profileHero reveal"><div class="profileLargeAvatar">K</div><div><span class="kicker">TECHNOLOGY EXPLORER</span><h1>Kash</h1><p>AI agents · Automation · Product building · Future tech</p></div></div>
+        <div class="profileMetrics reveal"><article><span>HOSTED</span><strong>06</strong><p>Shifts</p></article><article><span>SHARED</span><strong>18</strong><p>Ideas</p></article><article><span>SPARKED</span><strong>47</strong><p>Reactions</p></article><article><span>STREAK</span><strong>05</strong><p>Sessions</p></article></div>
+        <section class="legendary reveal"><span class="smallLabel">LEGENDARY SHIFT</span><h2>I built an internal tool during lunch.</h2><p>16 July 2026 · Live build</p><button class="textBtn">Open session <span>↗</span></button></section>
+      </section>
+    </main>
+
+    <nav class="mobileNav" aria-label="Mobile navigation">
+      <button class="active" data-nav="home"><span>⌂</span><small>Home</small></button>
+      <button data-nav="ideas"><span>✦</span><small>Ideas</small></button>
+      <button class="mobileAdd" id="mobileShiftMe"><span>+</span></button>
+      <button data-nav="radar"><span>◉</span><small>Radar</small></button>
+      <button data-nav="profile"><span>◎</span><small>You</small></button>
+    </nav>
+  </div>
+
+  <div class="modal" id="shiftModal" aria-hidden="true">
+    <div class="modalBackdrop" data-close="shiftModal"></div>
+    <div class="shiftModalCard">
+      <button class="modalClose" data-close="shiftModal" aria-label="Close">×</button>
+      <span class="kicker">RANDOM SHIFT</span>
+      <div class="topicRoller" id="topicRoller">AI AGENTS</div>
+      <p id="topicPrompt">Could AI agents replace half the software we currently use?</p>
+      <div class="formatChoices"><button>DEBATE</button><button>EXPERIMENT</button><button>BUILD</button><button>LIGHTNING TALK</button></div>
+      <button class="primaryBtn full" id="rollAgainBtn"><span>SHIFT AGAIN</span><b>↻</b></button>
+    </div>
+  </div>
+
+  <div class="modal" id="ideaModal" aria-hidden="true">
+    <div class="modalBackdrop" data-close="ideaModal"></div>
+    <div class="ideaModalCard">
+      <button class="modalClose" data-close="ideaModal" aria-label="Close">×</button>
+      <span class="kicker">NEW IDEA</span>
+      <h2>What should the team explore?</h2>
+      <label>THE THOUGHT<input id="ideaInput" maxlength="120" placeholder="Write one sharp question" /></label>
+      <label>WHY IT MATTERS<textarea id="ideaReason" rows="4" placeholder="Give the team one reason to care"></textarea></label>
+      <button class="primaryBtn full" id="publishIdeaBtn"><span>PUBLISH IDEA</span><b>↗</b></button>
+    </div>
+  </div>
+
+  <div class="commandPalette" id="commandPalette" aria-hidden="true">
+    <div class="commandBox">
+      <div class="commandInput"><span>⌘</span><input id="commandInput" placeholder="Jump anywhere in Shift" /></div>
+      <div class="commandResults">
+        <button data-nav="home"><span>⌂</span>Go home<kbd>H</kbd></button>
+        <button data-nav="ideas"><span>✦</span>Open idea wall<kbd>I</kbd></button>
+        <button data-nav="radar"><span>◉</span>Open tech radar<kbd>R</kbd></button>
+        <button data-nav="library"><span>⌘</span>Search knowledge<kbd>L</kbd></button>
+        <button id="commandShiftMe"><span>↻</span>Give me a random Shift<kbd>S</kbd></button>
+      </div>
+    </div>
+  </div>
+
+  <section class="liveMode" id="liveMode" aria-hidden="true">
+    <div class="liveNoise"></div>
+    <header><div class="liveWordmark">SHIFT 27</div><div class="liveStatus"><span></span>LIVE</div><button id="exitLiveBtn">EXIT</button></header>
+    <main>
+      <div class="liveHost"><span>HOSTED BY USAMA</span><h1>AI AGENTS<br>ARE APPS<br><em>DISAPPEARING?</em></h1><p>Tap what you feel. The room reacts with you.</p></div>
+      <div class="liveReactions">
+        <button data-live="❤️"><span>❤️</span><small>LOVE THIS</small></button>
+        <button data-live="🤯"><span>🤯</span><small>DID NOT KNOW</small></button>
+        <button data-live="❓"><span>❓</span><small>EXPLAIN</small></button>
+        <button data-live="🔥"><span>🔥</span><small>TRY THIS</small></button>
+      </div>
+    </main>
+    <div class="reactionStage" id="reactionStage"></div>
+  </section>
+
+  <div class="toast" id="toast"><span id="toastIcon">✦</span><p id="toastText">Saved</p></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
