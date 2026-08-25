@@ -444,4 +444,12 @@ async function init(){
   if(/[–—]/.test(uiText)) console.warn('Visible long dash detected');
 }
 
+window.addEventListener("load", () => {
+  const intro = document.getElementById("intro");
+
+  setTimeout(() => {
+    intro.classList.add("hide");
+  }, 1800);
+});
+
 init();
