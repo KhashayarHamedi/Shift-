@@ -81,7 +81,14 @@ const $ = sel => document.querySelector(sel);
 const $$ = sel => [...document.querySelectorAll(sel)];
 const escapeHtml = str => String(str ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 const uid = prefix => prefix + Math.random().toString(36).slice(2,9);
-const isAdmin = () => currentUser === 'kash';
+const $ = sel => document.querySelector(sel);
+const $$ = sel => [...document.querySelectorAll(sel)];
+const escapeHtml = str => String(str ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+const uid = prefix => prefix + Math.random().toString(36).slice(2,9);
+
+const isAdmin = () => currentUser === 'kash' && adminAuthenticated;
+
+const nextHostId = () => {
 const nextHostId = () => {
   const i = state.rotation.indexOf(state.lastHost);
   return state.rotation[(i + 1 + state.rotation.length) % state.rotation.length];
@@ -284,7 +291,34 @@ function renderIdentityChoices(){
 
 function setIdentity(id){
   if(!state.people[id]) return;
-  currentUser=id; localStorage.setItem(IDENTITY_KEY,id); closePopover('identityPopover'); renderAll(); toast(`You are ${state.people[id].name}`);
+
+  // Kash requires admin authentication
+  if(id === 'kash' && !adminAuthenticated){
+    $('#adminPasswordInput').value = '';
+    $('#adminPasswordError').textContent = '';
+
+    closePopover('identityPopover');
+    openModal('adminPasswordModal');
+
+    setTimeout(() => {
+      $('#adminPasswordInput').focus();
+    }, 100);
+
+    return;
+  }
+
+  // Leaving Kash locks admin access again
+  if(id !== 'kash'){
+    adminAuthenticated = false;
+  }
+
+  currentUser = id;
+  localStorage.setItem(IDENTITY_KEY, id);
+
+  closePopover('identityPopover');
+  renderAll();
+
+  toast(`You are ${state.people[id].name}`);
 }
 
 function route(name){
@@ -396,6 +430,43 @@ function bind(){
   $('#identityButton').onclick=()=>openPopover('identityPopover');
   $('#profileButton').onclick=()=>openProfile(currentUser); $('#mobileProfile').onclick=()=>openProfile(currentUser);
   $('#adminButton').onclick=openAdmin;
+  $('#adminPasswordForm').onsubmit = async e => {
+  e.preventDefault();
+
+  const password = $('#adminPasswordInput').value;
+  const error = $('#adminPasswordError');
+
+  error.textContent = '';
+
+  try {
+    const response = await fetch('/api/admin-auth', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({ password })
+    });
+
+    if (!response.ok) {
+      error.textContent = 'Incorrect password';
+      return;
+    }
+
+    adminAuthenticated = true;
+    currentUser = 'kash';
+
+    localStorage.setItem(IDENTITY_KEY, 'kash');
+
+    closeModal('adminPasswordModal');
+
+    renderAll();
+
+    toast('Admin unlocked');
+
+  } catch {
+    error.textContent = 'Could not verify password';
+  }
+};
   $('#quickAddButton').onclick=()=>openModal('quickAddModal');
   $('#quickSuggest').onclick=()=>{closeModal('quickAddModal');openModal('choosePersonModal');};
   $('#quickFuture').onclick=()=>{closeModal('quickAddModal');openNewFuture();};
