@@ -79,20 +79,33 @@ let saveTimer = null;
 
 const $ = sel => document.querySelector(sel);
 const $$ = sel => [...document.querySelectorAll(sel)];
-const escapeHtml = str => String(str ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
-const uid = prefix => prefix + Math.random().toString(36).slice(2,9);
-const $ = sel => document.querySelector(sel);
-const $$ = sel => [...document.querySelectorAll(sel)];
-const escapeHtml = str => String(str ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
-const uid = prefix => prefix + Math.random().toString(36).slice(2,9);
 
-const isAdmin = () => currentUser === 'kash' && adminAuthenticated;
+const escapeHtml = str =>
+  String(str ?? '').replace(
+    /[&<>'"]/g,
+    c => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[c])
+  );
 
-const nextHostId = () => {
+const uid = prefix =>
+  prefix + Math.random().toString(36).slice(2, 9);
+
+const isAdmin = () =>
+  currentUser === 'kash' && adminAuthenticated;
+
 const nextHostId = () => {
   const i = state.rotation.indexOf(state.lastHost);
-  return state.rotation[(i + 1 + state.rotation.length) % state.rotation.length];
+
+  return state.rotation[
+    (i + 1 + state.rotation.length) % state.rotation.length
+  ];
 };
+
 const nextHost = () => state.people[nextHostId()];
 
 function localLoad(){
