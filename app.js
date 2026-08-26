@@ -31,7 +31,7 @@ const seed = {
       suggestions: ['AI pricing models','Future skills','Consulting without slides']
     },
     param: {
-      id: 'param', name: 'Param', initial: 'P', role: 'Automation Builder',
+      id: 'param', name: 'Param', initial: 'P', role: 'Captain',
       bio: 'Likes practical automation, infrastructure and experiments that turn ideas into working systems.',
       topic: 'Do workflows disappear when agents arrive?',
       description: 'A hands on discussion about workflow engines, agents and the future of enterprise automation.',
